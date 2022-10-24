@@ -15,7 +15,7 @@ class Main:
         os.system('reset')
 
     def run(self):
-        print("|=================================================|")
+        print("|================================================|")
         print("| Selecione uma ação: ")
         print("|-------------------------------------------------|")
         print("| ➕ (i) Insira um novo registro no Lucene")
