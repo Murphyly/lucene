@@ -1,3 +1,4 @@
+from org.apache.lucene.store import SimpleFSDirectory
 import lucene
 import document
 import searcher
@@ -18,6 +19,7 @@ class Main:
         print("| Selecione uma ação: ")
         print("|-------------------------------------------------|")
         print("| ➕ (i) Insira um novo registro no Lucene")
+        print("| ➕ (a) Insira o autor do título")
         print("| 🔍 (s) Busque por um termo nos registros do Lucene")
         print("| 🚪 (e) Sair do programa")
         print("|=================================================|")
@@ -26,8 +28,15 @@ class Main:
 
             if (command == 'i'):
                 print("|-------------------------------------------------|")
-                title = input("| ➕ Adcionar um Titulo: ")
+                title = input("| ➕ Adicionar um Titulo: ")
                 self.__index(title)
+                print("|-------------------------------------------------|")
+                print("|  ✅ Registro adiocionado com sucesso!")
+                print("|-------------------------------------------------|")
+            if (command == 'a'):
+                print("|-------------------------------------------------|")
+                artist= input("| ➕ Adicionar autor do título: ")
+                self.__index(artist)
                 print("|-------------------------------------------------|")
                 print("|  ✅ Registro adiocionado com sucesso!")
                 print("|-------------------------------------------------|")
@@ -43,7 +52,7 @@ class Main:
     def __index(self, title):
         indexWriter = writer.Writer().create(INDEXES_DIRECTORY)
         indexWriter.addDocument(
-            document.Document().create(int(time.time()), title)
+            document.Document().create(int(time.time()), title, artist)
         )
         indexWriter.commit()
         indexWriter.close()

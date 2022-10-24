@@ -12,6 +12,7 @@ class Document:
         indexDocument = LuceneDocument()
         indexDocument.add(Field("id", str(id), StringField.TYPE_STORED))
         indexDocument.add(Field("title", str(title), TextField.TYPE_STORED))
+        indexDocument.add(Field("artist", str(artist), TextField.TYPE_STORED))
         indexDocument.add(Field("keywords", self.__keywords(
             id, title), TextField.TYPE_NOT_STORED))
         return indexDocument

@@ -26,4 +26,7 @@ class Searcher:
         parser = QueryParser("keywords", analyzer)
         parser.setDefaultOperator(QueryParser.Operator.OR)
 
+        parser2 = QueryParser("artist", analyzer)
+        parser2.setDefaultOperator(QueryParser.Operator.AND)
+
         return parser.parse(arguments)
